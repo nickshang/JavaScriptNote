@@ -2,77 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="327dd776-67c7-49e4-a652-18c66d75d2bd" name="Default" comment="change for idea">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/10.reg/1..js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/13.web_javascript/1.sample.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/14.window/navigator.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/21.media/canvas.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/22.HTML5 API/1.Array.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/22.HTML5 API/2.BlobUrl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/22.HTML5 API/3.FileAPI.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/22.HTML5 API/4.Histroy.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/22.HTML5 API/5.HtmlAPI2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/1.index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/10.css bind.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/10.event.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/10.style bind.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/11.attr bind.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/11.foreach.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/11.foreach10.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/11.foreach11.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/11.foreach2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/11.foreach3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/11.foreach4.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/11.foreach5.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/11.foreach6.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/11.foreach7.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/11.foreach8.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/11.foreach9.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/12.with.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/14.click.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/14.click2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/14.if.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/14.options.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/2.index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/3.index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/32.component1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/32.component2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/4.index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/7.Visible.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/8.Text.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/8.Text_2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/8.Text_3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/9.html bind.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/radio.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/31.Knockout/t.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/7.array/11.array.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/7.array/12.String.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/7.array/2.readAndSet.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/7.array/7-16.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/7.array/7.1.foreach.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/7.array/9.emcascrip5method.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/8.function/1.defined.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/8.function/2.functionInvocation.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/8.function/3.args.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/8.function/4.function.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/8.function/5.namescpace.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/8.function/6.closure.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/8.function/7.function.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/8.function/8.7.6Function构造函数.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/8.function/8.8函数编程.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/8.function/8.functionProgramming.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/8.function/bind.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/8.function/extend.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/9.class/1.classPrototype.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/9.class/2.classConstructor.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/9.class/3.extends.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/9.class/5.classType.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/9.class/9_3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/9.class/9_4.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/9.class/range2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/6.Object/README.md" afterPath="$PROJECT_DIR$/6.Object/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project-bootstrap/javascript6.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="JavaScriptNote.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -98,12 +30,19 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="85">
-                <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+              <first_editor relative-caret-position="306">
+                <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="javascript6.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project-bootstrap/javascript6.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -134,9 +73,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="305" />
-    <option name="y" value="63" />
-    <option name="width" value="1370" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectView">
@@ -163,6 +102,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="0.JavaScriptNote" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="0.JavaScriptNote" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="0.JavaScriptNote" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project-bootstrap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -206,6 +159,7 @@
       <recent name="E:\work\project\0.JavaScriptNote\40.project" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\work\project\0.JavaScriptNote\project-bootstrap" />
       <recent name="E:\work\project\0.JavaScriptNote" />
       <recent name="F:\workspace\JavaScriptNote\6.Object" />
       <recent name="F:\workspace\JavaScriptNote" />
@@ -636,7 +590,7 @@
       <workItem from="1466169612481" duration="1247000" />
       <workItem from="1466214593652" duration="604000" />
       <workItem from="1468920981459" duration="5989000" />
-      <workItem from="1511945132983" duration="1057000" />
+      <workItem from="1511945132983" duration="1563000" />
     </task>
     <task id="LOCAL-00001" summary="change for idea">
       <created>1465794718472</created>
@@ -726,10 +680,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12386000" />
+    <option name="totallyTimeSpent" value="12892000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="305" y="63" width="1370" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -741,7 +696,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32363012" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2534351" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25113463" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -934,11 +889,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/project-bootstrap/javascript6.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="85">
-            <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+          <first_editor relative-caret-position="306">
+            <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
