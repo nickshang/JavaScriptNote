@@ -20,7 +20,7 @@
 ### 22.HTML5 API
 
 
-## 推荐数据购买地址
+## 推荐数书购买地址
 
   ![JavaScript权威指南(第6版)中文版](project-bootstrap/javascript6.jpg)http://product.dangdang.com/22722790.html
   
