@@ -1,0 +1,23 @@
+<html>
+	<title></title>
+	<script type="text/javascript">
+		
+		//绑定
+		var sum = function(x,y) {return x + y; } //返回两个实参的和值
+
+		//创建一个类似sum的新函数,但this的值绑定到null
+		//并且第一个参数绑定到1,这个新的函数期望值传入一个实参
+		var succ = sum.bind(null, 1);
+		var result = succ(2);
+		console.log( result );
+
+		function f(y,z) {return this.x + y + 2; };
+		var g = f.bind({x:1}, 2);
+		g(3);
+
+
+	</script>
+	<body>
+		
+	</body>
+</html>

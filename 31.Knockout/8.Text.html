@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+
+
+</head>
+<body>
+
+Today's message is: <span data-bind="text: myMessage"></span>
+
+<script type="text/javascript">
+
+
+    //  Text绑定主要是让DOM元素显示参数值。
+    //  通常情况下，该绑定在<span>和<em>这样的元素上非常有用，而实际上你可以绑定任何元素。
+    var viewModel = {
+        myMessage: ko.observable() // Initially blank
+    };
+    ko.applyBindings(viewModel);
+    viewModel.myMessage( ["Hello, world!"]); // Text appears
+
+
+    //如果参数是一个observable值，text绑定将会在值变化时更新元素text内容。如果参数不是observable值，text绑定仅仅会设置元素内容一次，以后不会再更新。
+   //如果你传入的不是一个值或者一个字符串（比如：你传入一个对象或者数组）那么显示的文本将是yourParameter.toString()的结果。
+    viewModel.myMessage( ["Hello, world!" ,"XXXX"]); // Text appears
+
+
+    //
+    setTimeout(function(){
+        viewModel.myMessage( "xxxxxx");
+    },3000)
+
+
+    setTimeout(function(){
+        viewModel.myMessage( "xxxddddxxx");
+    },3000)
+
+</script>
+
+</body>
+</html>

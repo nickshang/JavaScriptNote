@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+
+    <script type="text/javascript">
+        
+
+            var sidebarNavList = [
+                {
+                   navTitle: "我的课表",
+                   courseList: [
+                        {  curIndex: 1, name: '待上课节', url: '/icourse/index.vpage#/schedule_plan/a' },
+                        {  curIndex: 2, name: '历史课节', url: '/icourse/index.vpage#/schedule_ed/a' }
+                   ] 
+                },
+                {
+                   navTitle: "作业管理",
+                   courseList: [
+                        {  curIndex: 3, name: '布置作业', url: '/homework/assign/list.vpage' },
+                        {  curIndex: 4, name: '检查作业', url: '/homework/check/list.vpage' }
+                   ] 
+                },
+                {
+                   navTitle: "学习报告",
+                   courseList: [
+                        {  curIndex: 5, name: '课节报告', url: '' },
+                        {  curIndex: 6, name: '课程报告', url: '' }
+                   ] 
+                },
+            ];
+
+            // var shows = ko.observable([false,false,false]);
+
+            // var show = function(index){
+            //     for(var i = 0; i < sidebarNavList.length; i++){
+            //          shows()[i](sidebarNavList[index]["navTitle"].indexOf(self.data.appName) = -1);
+            //     }
+            // }
+
+            var viewModel = {
+                shows:   ko.observable([false,false,false]);,
+                show:  function(index){
+                    for(var i = 0; i < sidebarNavList.length; i++){
+                         shows()[i](sidebarNavList[index]["navTitle"].indexOf(self.data.appName) = -1);
+                    }
+                }
+             };
+
+            ko.applyBindings(viewModel);
+
+
+    </script>
+</head>
+<body>
+
+<h1 data-bind="text: city"> </h1>
+
+
+
+
+</body>
+</html>

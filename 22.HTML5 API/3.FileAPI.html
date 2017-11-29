@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用异步文件系统API</title>
+	
+</head>
+<body>
+	<button id="bt">点击</button>
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+		/**
+		* 启动chrome的时候需要开启这些选项
+		* --unlimited-quota-for-files : 启动文件系统访问
+		* --allow-file-access-from-files : 允许通过 file://URL 进行测试
+		*/
+
+		// 这里使用的大部分异步函数都接受一个可迅的错误回调参数
+		//  这里的回调函数只是简单地将错误输出
+		function logger(e) { console.log(e); }
+
+		// requestFileSystem()方法创建一个在沙箱环境中的本地文件系统
+		// 并且只有同源的应用才可以访问
+		// 可以在该文件系统进行文件的读/写，但是只能限定在该沙箱中 
+		// 不能访问其他的文件系统
+		var filesystem = null; 					// 假设在调用下面的函数之前，已经初始化完毕
+
+		window.requestFileSystem = window.requestFileSystem 
+		|| window.webkitRequestFileSystem;
+
+		function initFS() {
+			// window.requestFileSystem(window.TEMPORARY, 
+			// // 或者采用缓存文件的临时(TEMPORARY)文件系统
+			// 10*1024*1024,	// 10MB
+			// function(fs) {	// 完成后，调用此方法
+			//   	filesystem = fs;// 将文件系统保持到一个全局变量中
+			// },
+			// logger);			// 如果发生错误则调用此方法
+
+			window.requestFileSystem(window.TEMPORARY, 1024*1024, function(fs) {  
+			  console.log("fs1:" + fs);
+	          filesystem = fs;  
+	          console.log("fs2:" + filesystem);
+	        }, logger);  
+
+			console.log( "f3:" + filesystem );
+		}
+	   
+
+		// 以文本形式读取指定文件的内容，并将他们传递给回调函数
+		function readTextFile(path, callback) {
+			// 根据指定的文件名，调用getFile()获取文件的FileEntry对象
+			filesystem.root.getFile(path,{},function(entry) {
+				// 使用FileEntry调用此方法来获取文件
+				// 现在使用FileEntry.file()方法获取File对象
+				entry.file(function(file) { 		// file就表示File对象
+					var reader = new FileReader(); 	// 创建一个FileReader对象
+					reader.readAsText(file);		// 读取文件 
+					reader.onload = function() {	// 读取成功时
+						callback(reader.result);	// 将其内容传递给回调函数
+
+					}
+					reader.onerror = logger;			// 记录调用readAsText()时发生的错误
+
+				},logger)
+			},logger);
+		}
+
+		// 将制定的内容添加到制定路径的文件中
+		// 如果指定路径的文件不存在，则使用该文件的名创建一个新的文件
+		// 完成之后，调用回调函数
+		function appendToFile(path,contents,callback){
+			// filesystem.root指根目录
+			filesystem.root.getFile(			// 获取FileEntry对象
+				path,							// 想要获取的文件的名称和路径
+				{create:true},					// 如果文件不存在则创建一个
+				function(entry)	{				// 完成之后调用此函数
+					entry.createWriter(			// 为该文件创建一个FileWriter对象
+						function(writer) {		// 为该文件创建一个File
+							// 默认情况下，从文件最开始开始写入
+							// 这里指定的文件最后开始写
+							writer.seek(writer.lenght);	// 移动到文件最后
+
+							// 将文件内容转换为Blob
+							// contents参数可以是字符串、Blob或者arryBuffer
+							var bb = new BlobBuilder();
+							bb.append(contents);
+							var blob = bb.getBlob();
+
+							// 现在将该Blob写入到文件中
+							writer.write(blob);
+							writer.onerror = logger; 		// 记录调用writer()方法时发生的错误
+							if (callback) {					// 如果有回调函数
+								writer.onwrite = callback;	// 则成功的时候调用
+							}
+
+						},
+						logger
+					);
+				},
+				logger);
+		}
+
+		// 删除指定的文件，完成后调用指定的回调函数
+		function deleteFile(name,callback) {
+			filesystem.root.getFile(name,			// 根据指定的名称获取相应的FileEntry对象
+				{},								
+				function(entry) {					// entry就是该FileEntry对象
+					entry.remove(callback,			// 删除FileEntry对象
+								logger);			// 或者记录调用remove()方法好发生的错误
+				},
+				logger);							// 记录调用getFile()方法时发生的错误
+		}
+
+		// 根据指定的名称创建一个新的目录
+		function makeDirectory(name,callback) {
+			filesystem.root.getDirectory(name,					// 要创建的目录的名称
+										{						// 选择
+											crate:true,			// 如果不存在，则创建
+											exclusive: true		// 如果存在,则报错
+										},
+										callback,
+										logger);				// 记录错误
+		}
+
+		// 读取指定目录的内容，并以字符串数组的形成将内容传递给指定的回调函数
+		function listFiles(path,callback) {
+			// 如果指定的内容不存在，则列出根目录
+			// 否则，根据名称查找目录并将目录内容列出来(或者如果发出错误就记录错误)
+			if (!path) getFiles(filesystem.root);
+			else filesystem.root.getDirectory(path, {}, getFiles,logger);
+
+			function getFiles(dir) {					// 此方法在之前也使用过
+				var reader = dir.createReader();		// 一个DirectroyReader对象
+				var list = [];
+				reader.readEntries(handleEntries,		// 将每项都传递给下面的函数或者记录错误
+								logger);
+
+				// 读取目录可以分成很多步
+				// 必须调用readEntries()方法指导获取空数组为止
+				// 完成之后可以将整个列表传递给回调函数
+				function handleEntries(entries) {
+					if ( entries.length == 0) callback(list); //完成
+					else {
+						// 否则，将这些项目添加到列表中，并继续读取
+						// 此类数组对象包含FileEntry对象
+						// 这里需要胡群殴诶个获取他们的名称
+						for (var i = 0; i < entries.length; i++) {
+							var name = entries[i].name; 				// 获取名称
+							if (entries[i].isDirectory) name += "/";	// 标记目录
+							list.push(name);
+						}
+
+						// 获取下一批项目
+						reader.readEntries(handleEntries,logger);
+					}
+				}
+			}
+		}
+
+
+		// 文档载入监听
+		document.ready = function (callback) {
+            ///兼容FF,Google
+            if (document.addEventListener) {
+                document.addEventListener('DOMContentLoaded', function () {
+                    document.removeEventListener('DOMContentLoaded', arguments.callee, false);
+                    callback();
+                }, false)
+            }
+             //兼容IE
+            else if (document.attachEvent) {
+                document.attachEvent('onreadytstatechange', function () {
+                      if (document.readyState == "complete") {
+                                document.detachEvent("onreadystatechange", arguments.callee);
+                                callback();
+                       }
+                })
+            }
+            else if (document.lastChild == document.body) {
+                callback();
+            }
+        }
+
+        // 文档载入
+        var button = document.querySelector('#bt');
+        button.addEventListener('click', function () {
+                   appendToFile('text.txt','javascript HTML5 FILE API',logger);
+                }, false);
+
+      	 // Initiate filesystem on page load.  
+      	if (window.requestFileSystem) {  
+       		 initFS();  
+      	}  
+					
+	</script>

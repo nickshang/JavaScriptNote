@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sample</title>
+</head>
+<style >
+	/* 本页的CSS样式表 */
+	.reveal * {display: none;}
+	/* class="reveal"的元素的字元素都不显示 */
+	.reveal *.handle {display: block;}
+	/* 除了class="handle"的元素 */
+</style>
+<script type="text/javascript">
+	//所有的页面逻辑在onload事件以后启动
+	window.onload = function(){
+		// 找到所有class名为"reveal"的容器元素
+		var elements = document.getElementsByClassName("reveal");
+		for (var i = 0; i < elements.length; i++) { //对每个元素进行遍历
+			var elt = elements[i];
+			//找到容器中的"handle"元素
+			var title = elt.getElementsByClassName("handle")[0];
+			//当单击这个元素时，显现剩下的内容
+			addRevealHandler(title,elt);
+
+			function addRevealHandler(title,elt){
+				title.onclick = function(){
+					if(elt.className == "reveal")
+						elt.className = "revealed";
+					else if(elt.className = "revealed")
+						elt.className = "reveal";
+				}
+			}
+		}
+	}
+</script>
+<body>
+	<div class="reveal">
+		<h1 class="handle">Click Here to Reveal Hidden Text</h1>
+		<p>This .......................</p>
+	</div>
+</body>
+</html>

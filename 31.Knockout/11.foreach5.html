@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+</head>
+<body>
+
+<ul>
+    <li class="header">Header item</li>
+
+   
+
+    <!-- ko foreach: myItems -->
+    <li>Item <span data-bind="text: $data"></span></li>
+    <!-- /ko -->
+</ul>
+
+<button data-bind="click: addPerson">Add</button>
+
+<script type="text/javascript">
+            ko.applyBindings({
+                myItems: ['A', 'B', 'C']
+            });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+
+
+</head>
+<body>
+The name is <span data-bind="text: fullName"></span>
+
+
+<script type="text/javascript">
+
+    function AppViewModel(){
+        this.firstName=ko.observable('Bob');
+        this.lastName=ko.observable('Smith');
+        this.fullName=ko.computed(function(){
+            return this.firstName()+" "+this.lastName();
+        },this);
+    }
+     ko.applyBindings(AppViewModel);
+
+</script>
+</body>
+</html>

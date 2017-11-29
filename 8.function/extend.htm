@@ -1,0 +1,54 @@
+<html>
+	<title></title>
+	<script type="text/javascript">
+		//定义一个扩展函数，用来将第二个以及后续的参数复制到第一个参数
+		//这里我们处理一个IE bug,在多数IE版本中
+		//如果o的属性拥有一个不可枚举的同名属性，则for/in循环
+		//不会枚举对象o可枚举类型，也就是说，这个不会正确处理诸如toString的属性
+		//除非我们显式监测它
+		var extend = (function(){ //将这个函数的返回值给extends
+
+			//在修复之前，首先检查是否存在bug
+			for (var p in {toString : null}) {
+				// 如果代码执行到这里，那么for/in循环会正确工作并返回
+				// 一个简单版本的extend()函数
+				return function extend(o) {
+					for( var i = 1; i < arguments.length; i++) {
+						var source = arguments[i];
+						for( var prop in source ) o[prop] = source[prop];
+					}
+					return o;
+				};
+			}
+
+
+			//如果代码执行到这里，说明for/in循环不会枚举测试对象的toStirng属性
+			//因此返回另一个版本的entend()函数,这个函数显式测试
+			//Object.prototype中不可枚举属性
+			return function pathed_extend(o){
+				for (var i = 1; i < arguments.length; i++ ){
+					var source = arguments[i];
+
+					//复制所有的可枚举的属性
+					for(var prop in source) o[prop] = source[prop];
+
+					//现在检查特殊属性
+					for(var j = 0; j < prototyps.length; j++ ){
+						prop = protoprops[j];
+						if(source.hasOwnProperty(prop)) o[prop] = sourcep[prop];
+					}
+				}
+				return o;
+			}
+
+			var protoprops = ["toStirng","valueOf","constructor",
+					"isPrototypeof","porpertyIsEnumerable","toLocaleString"];
+		}());
+
+		console.log( extend("toStirng","1111","valueOf") );
+
+	</script>
+	<body>
+		
+	</body>
+</html>

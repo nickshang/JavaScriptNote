@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+</head>
+<body>
+
+
+<div>
+    <!-- 每次点击按钮的时候，都会调用incrementClickCounter()函数，然后更新自动更新点击次数。 -->
+    You've clicked
+    <span data-bind="text: numberOfClicks">
+    </span>
+    times
+    <button data-bind="click: incrementClickCounter">
+        Click me
+    </button>
+
+
+
+</div>
+
+<script type="text/javascript">
+    //click绑定在DOM元素上添加事件句柄以便元素被点击的时候执行定义的JavaScript 函数。
+    // 大部分是用在button，input和连接a上，但是可以在任意元素上使用。
+    /*var viewModel = {
+        numberOfClicks: ko.observable(0),
+        incrementClickCounter: function() {
+            var previousCount = this.numberOfClicks();
+            this.numberOfClicks(previousCount + 1);
+        }
+    };*/
+
+
+
+    //    Click点击事件时所执行的函数。
+    //    你可以声明任何JavaScript函数 – 不一定非要是view model里的函数。
+    //    你可以声明任意对象上的任何函数，例如：someObject.someFunction。
+    //    View model上的函数在用的时候有一点点特殊，就是不需要引用对象的，
+    //    直接引用函数本身就行了，比如直接写incrementClickCounter就可以了，
+    //    而无需写成：viewModel.incrementClickCounter（尽管是合法的）。
+
+    function _click(){
+        var previousCount = this.numberOfClicks();
+        this.numberOfClicks(previousCount + 1);
+    }
+
+    var viewModel = {
+     numberOfClicks: ko.observable(0),
+     incrementClickCounter:  _click
+     };
+
+
+    ko.applyBindings(viewModel);
+</script>
+
+</body>
+</html>

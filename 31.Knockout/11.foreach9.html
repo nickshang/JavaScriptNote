@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+</head>
+<body>
+
+<h1 data-bind="text: city"> </h1>
+<p data-bind="with: coords">
+    Latitude: <span data-bind="text: latitude"> </span>,
+    Longitude: <span data-bind="text: longitude"> </span>
+</p>
+
+<script type="text/javascript">
+
+    // 我们可以使用with binding来重新定义一个上下文绑定，比如：
+    // 这样我们在使用coords下的latitude和longitude的时候我们就不需要使用coords.latitude来调用了，
+    // 因为我们使用with:coords来指定了coords的上下文，当我们使用coords下面的属性时就可以直接使用了。
+    ko.applyBindings({
+        city: "London",
+        coords: {
+            latitude: 51.5001524,
+            longitude: -0.1262362
+        }
+    });
+
+
+    function validataNum(src){
+        var result = '';
+        for(var i = 1; i < src.length; i++){
+           if( src[i]  >= src[i+1] ){
+                result += ',' + i;
+           }
+        }
+        return result;
+    }
+
+    var src = [1,2,5,2,5];
+
+    console.log(validataNum(src));
+</script>
+
+</body>
+</html>

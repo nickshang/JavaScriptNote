@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+</head>
+<br>
+
+
+  <!-- ko foreach: list -->
+  		  <tr>
+                    <td class="table-text-align"><span class="red-star">*</span>阶梯<!-- ko text: $index() + 1--><!-- /ko -->:</td>
+                    <td style="position: relative;">
+                    	<input type="text" placeholder="只限数字" data-bind="" class="small-width">
+                        <span class="red-star" data-bind=""></span>
+                        <span>优惠券ID:</span>
+                        <input type="text" placeholder="多个ID之间用英文逗号分开" data-bind=" event: { change: $parent.myFunction } " class="big-width">
+                        <a href="javascript:javascript(0);" class="btn btn-link" data-bind="click: function () {}">+</a>
+                        <div class="coupon-name-box">
+                        	<span>优惠券名1</span>
+                        	<a href="javascript:javascript(0);">删</a>
+                        </div>
+                        <a href="javascript:javascript(0);" class="btn btn-self-blue" data-bind="" style="position: absolute; right: 20px;top: 50%;margin-top: -19px;">-</a>
+                    </td>
+          </tr>
+  <!-- /ko -->
+
+ID:<input data-bind="event: { change:myFunction }"></input>
+
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+	
+    function MyViewModel() {
+         var self = this;
+
+         var count = 3;               // 信息数量
+    
+        var list = [];               // 信息集合
+
+        for(var i  = 0; i < count; i++){
+         list[i] = Object.create(  {index: i, title : 1, ids : '111;222', names : [ {id:111,title:'优惠劵1'}, {id:222,title:'优惠劵2'} ] }   );
+        }
+
+        self.list = ko.observableArray(list);
+
+        self.myFunction =  function(data,event) {
+            console.log("data",event.target)
+        }
+         
+     }
+
+     ko.applyBindings(new MyViewModel());
+
+
+</script>

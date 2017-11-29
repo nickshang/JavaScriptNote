@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+
+
+</head>
+<body>
+
+<div data-bind="visible: shouldShowMessage">
+    You will see this message only when "shouldShowMessage" holds a true value.
+</div>
+
+<script type="text/javascript">
+
+    // Visible绑定通过绑定一个值来确定DOM元素显示或隐藏
+    var viewModel = {
+        shouldShowMessage: ko.observable(true) // Message initially visible
+    };
+
+    // Knockout调用applyBindings激活viewModel
+    // （即把viewModel和View中的声明式绑定data-bind接洽关系起来）
+    ko.applyBindings(viewModel);
+
+    // 定时修改
+    setTimeout(function(){
+        viewModel.shouldShowMessage(false); // ... now it's hidden
+        console.log(false);
+    },5000);
+
+    // 定时修改
+    setTimeout(function(){
+        viewModel.shouldShowMessage(true); // ... now it's visible again
+        console.log(true);
+    },10000);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+</head>
+<body>
+
+<form data-bind="submit: getTweets">
+    Twitter account:
+    <input data-bind="value: twitterName,valueUpdate: 'keyup'"  />
+    <button type="submit">Get tweets</button>
+</form>
+
+twitterName:<div  data-bind="text: twitterName"></div>
+
+<div data-bind="with: resultData">
+    <h3>Recent tweets fetched at <span data-bind="text: retrievalDate"> </span></h3>
+    <ol data-bind="foreach: topTweets">
+        <li data-bind="text: text"></li>
+    </ol>
+
+    <button data-bind="click: $parent.clearResults">Clear tweets</button>
+
+
+</div>
+
+<script type="text/javascript">
+
+    function AppViewModel() {
+        var self = this;
+        self.twitterName = ko.observable('@example');
+        self.resultData = ko.observable(); // No initial value
+
+        self.getTweets = function() {
+            var name = self.twitterName(),
+                    simulatedResults = [
+                        { text: name + ' What a nice day.' },
+                        { text: name + ' Building some cool apps.' },
+                        { text: name + ' Just saw a famous celebrity eating lard. Yum.' }
+                    ];
+
+            self.resultData({ retrievalDate: new Date(), topTweets: simulatedResults });
+        }
+
+        self.clearResults = function() {
+            self.resultData(undefined);
+        }
+    }
+
+    ko.applyBindings(new AppViewModel());
+
+</script>
+
+</body>
+</html>

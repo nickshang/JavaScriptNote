@@ -1,0 +1,108 @@
+<html>
+	<title></title>
+	<script type="text/javascript">
+		"use strict"	// 严格模式
+
+		//使用Funciton构造函数
+		//函数体代码的编译总是会在顶层函数执行
+		var scope = "global";
+		function constructFunction(){
+			var scope = "local";
+			return new Function("return scope;");
+		}
+
+		console.log( constructFunction()() );
+
+		// call方法调用
+		var ob = { name: "name"}
+
+		function f1(a,b){
+				console.log("a:"+a);
+				console.log("b:"+b);		
+				console.log(this);
+		}
+		f1.call(ob);
+		f1.call(ob,0,0);	// 只是改变fn中的this为obj并且传递了两个参数1,2,但是没有执行函数
+
+		// 特殊情况 [严格模式]
+		f1.call();				// this -> undefined
+		f1.call(null);			// this -> null
+		f1.call(undefined);		// this -> undefined
+
+		// 特殊情况 [非严格模式]
+		f1.call();				// this -> window
+		f1.call(null);			// this -> window
+		f1.call(undefined);		// this -> window
+
+
+		// apply使用
+		f1.apply(ob,[1,1]);
+
+		// bind使用
+		f1.bind(ob,1,2);		//是改变fn中的this为obj并且传递了两个参数1,2，但是没有执行函数
+		f1();					//apply使用预处理机制
+
+
+
+
+	    // 去数组min,max
+	    var arr = [1,3,1,35,5];
+	    // 1、假设法
+
+	    // 2、排序
+
+	    // 3、apply方法
+	    var max = Math.max.apply(null,arr);
+	    console.log("max:" + max);
+
+	    // 4、eval
+
+	    // 括号表达式
+	    function fn1(){ console.log(this);console.log(1)}
+	    function fn2(){ console.log(this);console.log(2)}
+	    (fn1,fn2)();
+
+	    var obj = {name:"NICKSHANG",f2:fn2}
+		//(fn1,obj.f2)();	  
+
+		// 求平均时
+		function avgFn(){
+			// 转换为数组
+			var arr = [].slice.call(arguments)[0];
+
+			// 排序
+			arr.sort(function(a,b){
+				return a - b ;
+			})
+
+			console.log( arr.join('+') );
+			console.log( arr.length);
+
+			// 计算
+			return eval(  arr.join('+') ) / arr.length;
+		}
+
+		console.log("avgFn:" + avgFn(arr));
+	    
+	    // 模拟实现slice
+	    Array.prototype.mySlice = function(){
+	    	var arr = [];
+	    	for(var i = 0; i <this.length; i++){
+	    		arr[arr.length] = this[i];
+	    	}
+	    	return arr;
+	    }
+
+	    // 回调函数 -》 把一个方法A当做参数传递给一个函数B,然后在B执行的过重，我们随时根据需求软A方法执行
+	    
+
+
+	</script>
+	<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	</body>
+</html>

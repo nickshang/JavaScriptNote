@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+
+</head>
+<br>
+
+<select data-bind="foreach: items"> <option>Item<span data-bind="text: name"></span></option></select>
+
+<script type="text/javascript">
+
+    // 如果你想text值可编程化，一种选择是创建计算属性，然后在运算函数中编码决定text中显示什么。
+    var viewModel = {
+        items: [ "11","22","3" ]
+    };
+
+    // 绑定
+    ko.applyBindings(viewModel);
+
+</script>
+
+</body>
+</html>

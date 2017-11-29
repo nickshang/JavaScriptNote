@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var bytes = new Uint8Array(1024);			// 1K缓存区
+		var pattern = new Uint8Array([0,1,2,3]);	// 一4个字节的数组
+		//bytes.set(pattern);							// 将他们复制到另一个数组的开始
+		//bytes.set(pattern,2);							// 在另一个偏移量处再次复制它们
+		bytes.set([0,1,2,3],8);							// 
+		for(var i in bytes){
+			console.log(bytes[i]);
+		}
+
+		var bytes1 = new Uint8Array(8); 	// 分配8个字节
+		bytes1[0] = 1 ; 
+		console.log( bytes1.buffer[0] );
+		console.log( bytes1.buffer[1]  = 255 );
+		console.log( bytes1.buffer[1] );
+		console.log( bytes1[0] );
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

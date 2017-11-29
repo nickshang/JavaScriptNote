@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+</head>
+<body>
+
+
+
+<div>
+    <select data-bind="options:dropOptions,value:'9',
+    optionsCaption:'choose...',optionsText:'text',optionsValue:'value'" ></select>
+</div>
+<div>
+    <button type="button" data-bind="click: showSelectOption">show selected value</button>
+</div>
+
+
+<script type="text/javascript">
+    var ObjectArray = function (text, value) {
+        this.text = text;
+        this.value = value;
+    }
+
+    var appViewModel = function () {
+        var self = this;
+        this.dropOptions = ko.observableArray([new ObjectArray('a', 1), new ObjectArray('b', 2), new ObjectArray('c', 1)]);
+        this.selectedOption = ko.observable();
+        this.showSelectOption = function () {
+            alert(self.selectedOption());
+        }
+    }
+
+    ko.applyBindings(new appViewModel());
+</script>
+
+</body>
+</html>

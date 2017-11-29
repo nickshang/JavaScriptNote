@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>类的扩充</title>
+	<script type="text/javascript">
+		//多次调用函数f,歘让你一个迭代数
+		//比如,要输出“hello”三次;
+		// var n = 3;
+		// n.times(function(n){console.log( n + +" hello!");})
+		Number.prototype.times = function(f,context) {
+
+			var n = Number(this);
+			console.log(context);
+			//for (var i = 0; i< n; i++) f.call(context,i)
+			for (var i = 0; i< n; i++) f(i);
+		}
+
+		var n = 3;
+		n.times(function(n){console.log( n  +" hello!");});
+
+		//如果不存在ES5的String.trim()方法的话，就定义它
+		//这个方法用以去除字符串开的和结尾的空格
+		String.prototype.trim = String.prototype.trim || function()
+		{
+			if(!this) return this; //空字符不坐处理
+			return this.replace(/^\s+|\s+$/g,"");//使用正则表达是进行空格替换
+		};
+
+		var s = "  ss ";
+		console.log( s.trim() );
+
+		//返回函数的名字，如果它有(非标准的)name属性，则使用name属性
+		//否则，将函数转为字符串从总提取名称
+		//如果没有名字的函数，则返回一个空字符串
+		Function.prototype.getName = function(){
+			return this.name || this.toString().match(/function\s*([^()*]\(/)[1];
+		};
+
+		function f(){
+			return "nick";
+		}
+
+		console.log( "获取函数的名字：" + f.getName());
+
+	</script>
+</head>
+<body>
+
+<input id="name1" name="name1" value="x" maxlength="30" minlength="3">
+<input id="name2" name="name2" value="x" maxlength="30" minlength="3">
+
+</body>
+</html>
+
+<script>
+	document.getElementById("name2").onkeydown = function(){
+		console.log( document.getElementById("name1") );
+		document.getElementById("name1").focus();
+	}
+</script>

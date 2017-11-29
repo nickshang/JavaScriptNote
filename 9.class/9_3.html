@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript中Java式的类继承</title>
+</head>
+<script type="text/javascript" src="../common/extends.js"></script>
+<script type="text/javascript">
+	//一个用以定义简单类的函数 
+	function defineClass(constructor,// 用以设置实例的属性的函数
+						methods, //实例的方法，复制至原型中
+						static) //类属性，复制至构造函数中
+	{
+		if(methods) extend(constructor.prototype,methods);
+		if(static) extend(constructor,static);
+		return constructor;
+	}
+
+	//这是Range类的另一实现
+	var SimpleRange = defineClass(function(f,t) {this.f = f; this.t = t;},
+		{
+			includes: function(x) {return this.f = x && x <= this.t; },
+			toString: function(){ return this.f + "..." + this.t; }
+		},
+		{ upto: function(t) { return new SimpleRange(o,t);}
+		});
+
+	var s = new SimpleRange(1,3);
+	console.log(s.includes(2));
+	console.log(s.includes(4));
+</script>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+
+
+</head>
+<body>
+The name is <span data-bind="text: personName"></span>
+
+
+<script type="text/javascript">
+    /*    var myViewModel = {
+     personName: 'Bob',
+     personAge: 123
+     };*/
+
+    var myViewModel = {
+        personName: ko.observable('Bob'),
+        personAge: ko.observable(123)
+    };
+    ko.applyBindings(myViewModel);
+
+    setTimeout(function(){
+
+        // 写一个新值到监控属性上，调用observable方法，将要写的值作为一个参数传入即可。
+        // 例如，调用myViewModel.personName('Mary') 将会把名称改变成 'Mary'。
+        myViewModel.personName('Mary')
+
+        //一次性改变Model对象监控的多个属性值，你可以使用链式方法。例如：myViewModel.personName('Mary').personAge(50) 将会把名称改变成'Mary'将年龄设置为 50.
+        myViewModel.personName('Mary111').personAge(50);
+
+    },500);
+</script>
+</body>
+</html>

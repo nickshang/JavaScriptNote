@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+
+
+</head>
+<br>
+
+item is <span data-bind="text: price() > 50  ?'expensive' : 'affordable' "></span> today.</br>
+
+item is <span data-bind="text: priceRating  "></span> today.
+
+<script type="text/javascript">
+
+    // 如果你想text值可编程化，一种选择是创建计算属性，然后在运算函数中编码决定text中显示什么。
+    var viewModel = {
+        price: ko.observable(24.95)
+    };
+
+    viewModel.priceRating = ko.computed(function() {
+        return this.price() > 50 ? "expensive" : "affordable";
+    }, viewModel);
+
+    // 绑定
+    ko.applyBindings(viewModel);
+
+</script>
+
+</body>
+</html>

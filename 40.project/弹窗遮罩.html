@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>开关灯</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+
+            background: #111111;
+            opacity: 0.4;
+            filter:alpha(opacity=40);
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 10;
+            /*display: none;*/
+            /*visibility: hidden;*/
+            visibility: visible;
+        }
+
+        #box2 {
+            width: 300px;
+            height: 300px;
+            background: #ffff00;
+            position: relative;
+            margin-left: -150px;
+            margin-top: -150px;
+            left: 50%;
+            top:50%;
+        }
+
+    </style>
+</head>
+<body>
+<button id="btn">开关</button>
+<div id="box">
+    <div id="box2">14314151</div>
+</div>
+</body>
+</html>
+<script>
+    var oBtn = document.getElementsByTagName('button')[0];
+    var oBox = document.getElementById('box');
+    var oBox2 = document.getElementById('box2');
+
+    var oBodyW = document.documentElement.clientWidth || document.body.clientWidth;
+    var oBodyH = document.documentElement.clientHeight || document.body.clientHeight;
+    oBox.style.width = oBodyW +'px';// 设置oBox盒子的宽度为一个屏幕的宽度
+    oBox.style.height = oBodyH +'px';// 设置oBox盒子的高度为一个屏幕的高度
+
+    document.getElementById("box2").onclick = function(){
+        console.log(this);
+    }
+
+    document.body.onclick = function (e) {
+        e = e||window.event;
+        e.target = e.target || e.srcElement;
+        console.log(e.target)
+        if(e.target.tagName.toLowerCase()=='button'&& e.target.id=='btn') {
+//            box.style.display = 'block';
+            box.style.visibility = 'visible';
+            document.body.onscroll = function () {
+                return false;
+            };
+            return;
+
+        }
+//        box.style.display = 'none';
+        box.style.visibility = 'hidden';
+
+    };
+    // 阻止了box2事件的传播性
+    box2.onclick = function (e) {
+        e = e || window.event;
+        e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+
+        console.log(this);
+    };
+</script>

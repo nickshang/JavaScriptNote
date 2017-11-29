@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+</head>
+<body>
+
+
+<div>
+    <!--
+         1. 传参数给你的click 句柄。
+         最简单的办法是传一个function包装的匿名函数：
+         这样，KO就会调用这个匿名函数，里面会执行viewModel.myFunction()，并且传进了'param1' 和'param2'参数。
+     -->
+    <button data-bind="click: function() { viewModel.myFunction('param1', 'param2') }">
+        Click me
+    </button>
+
+    <!--
+        2.访问事件源对象
+        有些情况，你可能需要使用事件源对象，Knockout会将这个对象传递到你函数的第一个参数：
+    -->
+    <button data-bind="click: myFunctionEvent">
+        Click me for event
+    </button>
+
+
+    <!--
+       3.允许执行默认事件
+       默认情况下，Knockout会阻止冒泡，防止默认的事件继续执行。
+       例如，如果你点击一个a连接，在执行完自定义事件时它不会连接到href地址。
+       这特别有用是因为你的自定义事件主要就是操作你的view model，而不是连接到另外一个页面。
+       当然，如果你想让默认的事件继续执行，你可以在你click的自定义函数里返回true。
+   -->
+    <a data-bind="click: myFunctionA" href="www.baidu.com">
+        href
+    </a>
+
+
+    <th style="width: 250px;"
+        data-bind="text: '学生姓名：' + ( studentNameEN() && studentNameCN() ? (studentNameEN() + ' ('+ studentNameCN() +')' ) : (studentNameEN() ? studentNameEN() : studentNameCN()) )"></th>
+
+
+</div>
+
+<script type="text/javascript">
+
+    function _click(a, b) {
+        console.log("a:", a);
+        console.log("b:", b);
+    }
+
+    var viewModel = {
+        myFunction: _click,
+        myFunctionEvent: function (event) {
+            console.log(event);
+            //if (event.shiftKey) {
+            console.log("event.shiftKey ", event.shiftKey);
+        },
+        myFunctionA: function () {
+            console.log("myFunctionA:", myFunctionA)
+            return true;
+        }
+    };
+
+
+    ko.applyBindings(viewModel);
+</script>
+
+</body>
+</html>

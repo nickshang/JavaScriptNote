@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+
+
+			var canvas = document.getElementById('my_canvas_id');
+			var c = canvas.getContext('2d');
+
+			c.scale(0.5,0.5);
+
+			c.beginPath();
+			c.moveTo(100,100);
+			c.lineTo(200,200);
+			c.lineTo(100,200);
+
+			//c.fill();
+			c.stroke();
+
+			c.closePath();
+
+			c.moveTo(300,100);
+			c.lineTo(300,200);
+
+			c.stroke();
+
+
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="my_canvas_id" width="500px" height="500px"></canvas>
+</body>
+</html>

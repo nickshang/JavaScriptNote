@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+</head>
+<body>
+
+
+<div>
+
+    
+    <h4>Second instance, passing parameters</h4>
+    <div data-bind='component: {
+        name: "message-editor",
+        params: { initialText: "Hello, world!" }
+    }'></div>
+
+   <h4>First instance, without parameters</h4>
+    <div data-bind='component: "message-editor"'></div>
+     
+
+</div>
+
+<div id = "my-component-template">
+    Message: <input data-bind="value: text" />
+    length: <span data-bind="text: text().length"></span>
+</div>
+
+<script type="text/javascript">
+
+    var elemInstance = document.getElementById('my-component-template');
+ 
+
+    // ko.components.register('message-editor', {
+    //     viewModel: function(params) {
+    //         this.text = ko.observable(params && params.initialText || '');
+    //     },
+    //     template: { element: elemInstance }
+    // });
+
+    // AMD module whose value is a component viewmodel constructor
+    define(['knockout'], function(ko) {
+        function MyViewModel(params) {
+            this.text = ko.observable(params && params.initialText || '');
+        }
+     
+        return MyViewModel;
+    });
+
+    ko.components.register('message-editor', {
+         viewModel: {
+            createViewModel: function(params, componentInfo) {
+                // - 'params' is an object whose key/value pairs are the parameters
+                //   passed from the component binding or custom element
+                // - 'componentInfo.element' is the element the component is being
+                //   injected into. When createViewModel is called, the template has
+                //   already been injected into this element, but isn't yet bound.
+                // - 'componentInfo.templateNodes' is an array containing any DOM
+                //   nodes that have been supplied to the component. See below.
+     
+                // Return the desired view model instance, e.g.:
+                return new MyViewModel(params);
+            }
+        },
+        template: { element: elemInstance }
+    }); 
+
+     
+    ko.applyBindings();
+</script>
+
+</body>
+</html>

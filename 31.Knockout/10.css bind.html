@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../lib/knockout/dist/knockout.js"></script>
+
+
+</head>
+<br>
+
+<div data-bind="css: { profitWarning: currentProfit() < 0 }">
+    Profit Information
+</div>
+
+<script type="text/javascript">
+
+    var viewModel = {
+        currentProfit: ko.observable(150000)
+        // Positive value, so initially we don't apply the "profitWarning" class
+    };
+    viewModel.currentProfit(-50);
+
+    // 绑定
+    ko.applyBindings(viewModel);
+
+</script>
+
+</body>
+</html>

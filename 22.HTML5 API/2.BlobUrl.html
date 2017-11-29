@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Blob URL来显示一个拖放的图片文件</title>
+	<script type="text/javascript">
+
+		//createObjectURL()函数名称上意见不统一
+		var getBlobURL= (window.URL && URL.createObjectURL.bind(URL)) || 
+			(window.webkitURL && webkitURL.createObjectURL.bind(webkitURL)) ||
+			window.createObjectURL;
+
+		var revokeBlobURL = (window.URL && URL.revokeObjectURL.bind(URL)) ||
+			(window.webkitURL && webkitURL.revokeObjectURL.bind(webkitURL)) ||
+			window.revokeBlobURL;
+
+		console.log( window.revokeBlobURL );
+
+		// 在文档载入后，在droptarget元素上添加事件处理程序
+		// 以便他可以处理文件的拖放 
+		window.onload = function() {
+			// 查询要向其中添加处理程序的元素
+			var droptarget = document.getElementById("droptarget");
+
+			// 当用户开始拖放文件通过droptarget元素的实施，将其高亮显示
+			droptarget.ondragenter = function(e) {
+				// 如果拖的不是文件，则忽略它
+				// 在实施的时候，使用HTML5的dropzone属性会更加简单
+				var types = e.dataTransfer.types;
+				if (!types || 
+					(types.contains && types.contains("Files") ) || 
+					(types.contains && types.indexOf("Files") != -1 ))
+					{
+						droptarget.classList.add("active"); // 高量显示droptarget
+						return false; 						// 阻止默认事件处理
+					}
+ 			};
+
+ 			// 如果用户移出该区域，则取消高亮显示拖放区域
+ 			droptarget.ondragleave = function() {
+ 				droptarget.classList.remove("active");
+ 			}
+
+ 			// 此处理程序只是通知浏览器继续发送提醒
+ 			droptarget.ondragover = function(e) { return false; }
+
+ 			// 当用户放下文件时，就获取他们的URL，并显示对应的缩放图
+ 			droptarget.ondrop = function(e) {
+ 				var files = e.dataTransfer.files;			// 放下的文件
+ 				var f0  =  files[0];
+ 				console.log(f0.webkitRelativePath);
+ 				for(var s in f0){ 
+ 					console.log(s , f0[s]);
+ 				}
+
+ 				for (var i = 0; i < files.length; i++ )	{	// 循环每个文件
+ 					var type = files[i].type;
+ 					var reader = new FileReader();			// 读取文件
+ 					//console.log("s:" , reader.readAsDataURL(files[i])	);				//
+ 					reader.onload = function ( event ) { 
+	                    var txt = event.target.result;
+	                    console.log(txt);
+	                    //document.getElementById("result").innerHTML = txt;
+                    };
+                    reader.readAsDataURL(files[i]);
+
+ 					if (type.substring(0,6) !== "image/")	// 不是图片忽略
+ 						continue;
+ 					var img = document.createElement("img") // 创建<img>元素
+ 					img.src = getBlobURL(files[i]);			// 在<img>元素上使用Blob URL
+ 					img.onload = function(){				// 图片载入的时候
+ 						this.width = 100;					// 调整图片大小并
+ 						document.body.appendChild(this)		// 将它添加到文档中
+ 						revokeBlobURL(this.src);			// 但是要避免内存泄漏
+ 					}
+ 				}
+ 				droptarget.classList.remove("active")	// 取消高亮droptarget区域
+ 				return false;							// 处理完毕
+ 			}
+		}
+
+
+	</script>
+	<style> /* 给文件拖放目标区域定义简单的样式*/
+		#droptarget { border: solid black 2px; width:200px; height: 200px; }
+		#droptaget.active { border: solid red 4px; }
+	</style>
+</head>
+<body>
+	<!-- 文档定义文件拖放目标区域-->
+	<div id="droptarget">Drop Image Files Here</div>
+	<div dropzone="copy" style="width:100px; height: 100px;">xxxx</div>
+</body>
+</html>
